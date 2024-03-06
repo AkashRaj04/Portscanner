@@ -3,22 +3,20 @@ import subprocess
 import sys
 from datetime import datetime
 
-#for blank the screen
 subprocess.call('clear' , shell=True)
 
-#input
+
 remoteServer = input("Enter a remote host to scan: ")
 remoteServerIP = socket.gethostbyname(remoteServer)
 
-#Banner
+
 print ("#" * 20)
 print ("Please wait, scanning remote host", remoteServerIP)
 print ("#" * 20)
 
-#date and time of the scan started
+
 tim1 = datetime.now()
 
-#Looking for open ports and doing error handling
 try:
     for port in range(1,5000):
         sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,11 +36,11 @@ except socket.error:
     print ("Couldn't connect to sever")
     sys.exit()
 
-#check time again
+
 tim2 = datetime.now()
 
-#total time
+
 total = tim2 - tim1
 
-#printing complete msg with total time
+
 print ("scanning Complete in:" , total)
